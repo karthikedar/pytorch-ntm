@@ -22,55 +22,6 @@ This repository implements a vanilla NTM in a straight forward way. The followin
 
 ***
 
-## Copy Task
-
-The **Copy** task tests the NTM's ability to store and recall a long sequence of arbitrary information. The input to the network is a random sequence of bits, ending with a delimiter. The sequence lengths are randomised between 1 to 20.
-
-### Training
-
-Training convergence for the **copy task** using 4 different seeds (see the [notebook](./notebooks/copy-task-plots.ipynb) for details)
-
-![NTM Convergence](./images/copy-train.png)
-
- The following plot shows the cost per sequence length during training. The network was trained with `seed=10` and shows fast convergence. Other seeds may not perform as well but should converge in less than 30K iterations.
-
-![NTM Convergence](./images/copy-train2.png)
-
-### Evaluation
-
-Here is an animated GIF that shows how the model generalize. The model was evaluated after every 500 training samples, using the target sequence shown in the upper part of the image. The bottom part shows the network output at any given training stage.
-
-![Copy Task](./images/copy-train-20-fast.gif)
-
-The following is the same, but with `sequence length = 80`. Note that the network was trained with sequences of lengths 1 to 20.
-
-![Copy Task](./images/copy-train-80-fast.gif)
-
-***
-## Repeat Copy Task
-
-The **Repeat Copy** task tests whether the NTM can learn a simple nested function, and invoke it by learning to execute a __for loop__. The input to the network is a random sequence of bits, followed by a delimiter and a scalar value that represents the number of repetitions to output. The number of repetitions, was normalized to have zero mean and variance of one (as in the paper). Both the length of the sequence and the number of repetitions are randomised between 1 to 10.
-
-### Training
-
-Training convergence for the **repeat-copy task** using 4 different seeds (see the [notebook](./notebooks/repeat-copy-task-plots.ipynb) for details)
-
-![NTM Convergence](./images/repeat-copy-train.png)
-
-### Evaluation
-
-The following image shows the input presented to the network, a sequence of bits + delimiter + num-reps scalar. Specifically the sequence length here is eight and the number of repetitions is five.
-
-![Repeat Copy Task](./images/repeat-copy-ex-inp.png)
-
-And here's the output the network had predicted:
-
-![Repeat Copy Task](./images/repeat-copy-ex-outp.png)
-
-Here's an animated GIF that shows how the network learns to predict the targets. Specifically, the network was evaluated in each checkpoint saved during training with the same input sequence.
-
-![Repeat Copy Task](./images/repeat-copy-train-10.gif)
-
 ## Installation
 
 The NTM can be used as a reusable module, currently not packaged though.
